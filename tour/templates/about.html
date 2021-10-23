@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+  <div class="site-section" data-aos="fade-up">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-5 mb-md-0">
+            <img src="{% static 'images/hero_bg_2.jpg' %}" alt="Image" class="img-fluid rounded">
+          </div>
+          <div class="col-md-6 pl-md-5">
+            <h2 class="font-weight-light text-black mb-4">About Tour</h2>
+            <p> I will be recommending your tour and I will also be taking another in the future "I was so pleased with the trip. Our guide and driver were outstanding : knowledgeable, friendly, safety-conscious, and had great sense of humor</p>
+
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span> Thank you for a wonderful journey!</span></li>
+              <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span>Super trip and excellent planning</span></li>
+              <li class="d-flex align-items-center"><span class="icon-check2 text-primary h3 mr-2"></span><span> knowledgeable, friendly, safety-conscious</span></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

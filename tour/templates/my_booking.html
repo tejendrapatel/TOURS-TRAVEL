@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<center>
+      <h1 style="font-size:25px; background-color:darkcyan;height:35px;color:white;padding:5px;margin-top:5px;font-family : 'Monotype Corsiva" align="center"> MY BOOKING </h1>
+
+</center>
+<div class="container">
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Full Name</th>
+    <th>Email Id</th>
+      <th>Gender</th>
+    <th>Mobile Number</th>
+    <th>Destination</th>
+    <th>Address</th>
+    <th>Total Price</th>
+    <th>Date</th>
+    <th>Used Facility</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+    {% for i in data %}
+  <tr>
+
+    <td>{{i.id}}</td>
+    <td>{{i.Fname}} {{i.Lname}}</td>
+      <td>{{i.Email}}</td>
+      <td>{{i.gender}}</td>
+       <td>{{i.number}}</td>
+       <td>{{i.destination}}</td>
+       <td>{{i.address}}</td>
+       <td>{{i.price}}</td>
+       <td>{{i.date}}</td>
+       <td>{{i.used_facility}}</td>
+
+    <td><a href="{% url 'delete_booking' i.id %}" onclick="return confirm('Are you sure?')"><button class="btn btn-danger">delete</button></a></td>
+  </tr>
+
+    {% endfor %}
+    </tbody>
+
+</table>
+</div>
+{% endblock %}

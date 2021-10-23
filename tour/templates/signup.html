@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="p-3 bg-success">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mb-3">
+
+
+
+            <form  class="p-3 bg-light" novalidate method="POST">
+                {% csrf_token %}
+
+
+              <div class="row form-group">
+                <div class="col-md-4 mb-1 mb-md-0">
+
+                    {% for fm in form %}
+                        {{fm.label_tag}} {{fm}} <br>{{fm.errors|striptags}}
+                    {% endfor %}
+                    <input class="btn btn-primary" type="submit"  value="Sign Up">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+{% endblock %}

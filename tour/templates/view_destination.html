@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<center>
+      <h1 style="font-size:25px; background-color:darkcyan;height:35px;color:white;padding:5px;margin-top:5px;font-family : 'Monotype Corsiva" align="center"> VIEW DESTINATION </h1>
+
+</center>
+<div class="container">
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>ID</th>
+        <th>Image</th>
+    <th>Place</th>
+
+    <th>Country</th>
+    <th>Bus Price</th>
+    <th>Train Price</th>
+    <th>Flight Price</th>
+    <th>Food Price</th>
+    <th>person</th>
+    <th>Duration</th>
+    <th>Action</th>
+
+  </tr>
+  </thead>
+   <tbody>
+
+    {% for i in c %}
+  <tr>
+
+    <td>{{i.id}}</td>
+      <td><img src="{{i.image.url}}" style="width:60px"></td>
+    <td>{{i.place}}</td>
+      <td>{{i.country}}</td>
+      <td>{{i.price_by_bus}}</td>
+      <td>{{i.price_by_Train}}</td>
+      <td>{{i.price_by_Flight}}</td>
+      <td>{{i.food_price}}</td>
+      <td>{{i.number_of_person}}</td>
+      <td>{{i.days}}days {{i.nights}}nights</td>
+      <td><a href="{% url 'edit_destination' i.id%}"> <button class="btn btn-success"><i class="fa fa-edit"></i> </button></a>
+          <a href="{% url 'delete_destination' i.id %}" onclick="return confirm('Are you sure?')"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a></td>
+
+  </tr>
+
+    {% endfor %}
+    </tbody>
+
+</table>
+</div>
+{% endblock %}

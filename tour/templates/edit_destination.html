@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+    <div class="site-section bg-light">
+      <div class="container">
+          <h3 style="font-weight:bold;">Edit Destination</h3>
+          {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        <div class="row">
+
+          <div class="col-md-12 mb-12">
+
+
+
+            <form class="p-5 bg-white" method = "post" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+
+
+
+              <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Place</label>
+                  <input type="text" name="place" class="form-control" placeholder="Add Place name" value="{{data.place}}">
+                </div>
+              </div>
+
+              <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Country</label>
+                  <input type="text" name="country" class="form-control" placeholder="Add Country name" value="{{data.country}}">
+                </div>
+              </div>
+                <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Bus Price</label>
+                  <input type="text" name="pricebus" class="form-control" placeholder="bus price" value="{{data.price_by_bus}}">
+                </div>
+              </div>
+                 <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Train Price</label>
+                  <input type="text" name="pricetrain" class="form-control" placeholder="train price" value="{{data.price_by_Train}}">
+                </div>
+              </div>
+                 <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Flight Price</label>
+                  <input type="text" name="priceflight" class="form-control" placeholder="flight price" value="{{data.price_by_Flight}}">
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="text-black" >Images</label>
+                  <input type="file" name="image"   class="form-control">
+                </div>
+              </div>
+                <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Food Price</label>
+                  <input type="text" name="foodprice" class="form-control" placeholder="food price" value="{{data.food_price}}">
+                </div>
+              </div>
+               <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Number of person</label>
+                  <input type="text" name="person" class="form-control" placeholder="person"  value="{{data.number_of_person}}">
+                </div>
+              </div>
+               <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Days</label>
+                  <input type="number" name="days" class="form-control" placeholder="days"  value="{{data.days}}">
+                </div>
+              </div>
+                    <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Nights</label>
+                  <input type="number" name="nights" class="form-control" placeholder="nights"  value="{{data.nights}}">
+                </div>
+              </div>
+                 <div class="row form-group">
+
+                <div class="col-md-12">
+                  <label class="text-black" >Description</label>
+                    <textarea class="form-control" name="description">{{data.description}}</textarea>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Add Destination" class="btn btn-primary py-2 px-4 text-white">
+                </div>
+              </div>
+
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}

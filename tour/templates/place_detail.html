@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red">{{ message }}</li>
+    {% endfor %}
+</ul>
+<div class="site-section">
+
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <h2 class="font-weight-light text-black">Place Detail</h2>
+            <p class="color-black-opacity-5"></p>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="#" class="unit-1 text-center">
+              <img src="{{ detail.image.url }}" alt="Image" class="img-fluid">
+              <div class="unit-1-text">
+                <strong class="text-primary mb-2 d-block">$590</strong>
+
+              </div>
+            </a>
+          </div>
+          <div class="col-md-8">
+
+
+
+            <div class="p-4 mb-3 bg-white">
+
+              <div class="unit-1-heading">
+                <table class="table table-bordered bordered-success">
+                  <thead>
+                    <tr>
+                      <th scope="col">Place</th>
+                      <td>{{ detail.place }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Country</th>
+                      <td>{{ detail.country }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Tour</th>
+                      <td>{{detail.days}}days {{detail.nights}}nights</td>
+                    </tr>
+                  <tr>
+                      <th scope="col">Number of Person</th>
+                      <td>{{ detail.number_of_person }}</td>
+                    </tr>
+                   <tr>
+                      <th scope="col">Description</th>
+                      <td>{{ detail.description }}</td>
+                    </tr>
+                  </thead>
+                </table>
+                  <tr>
+                      <th>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <h5 style="font:"><b>Travelling:</b></h5>
+                        <input class="calc" type="radio" id="bus" name="travel" value="{{detail.price_by_bus}}">
+                        <label for="bus">Bus</label>
+                        <input class="calc" type="radio" id="train" name="travel" value="{{detail.price_by_Train}}" >
+                        <label for="train">Train</label>
+                        <input class="calc" type="radio" id="flight" name="travel" value="{{detail.price_by_Flight}}">
+                        <label for="flight">flight</label><br>
+
+                    <h5><b>Food:</b></h5>
+                        <input class="calc" type="radio" id="food" name="food" value="{{detail.food_price}}" >
+                        <label for="food">Yes</label>
+                        <input class="calc" type="radio" id="Nfood" name="food" value="0" >
+                        <label for="Nfood">No</label><br>
+
+                    <h5> <b>Total Price:</b></h5>
+                            <input type="text" name="price" />
+
+                    <label for="date"><h5><b>Date:</b></h5></label>
+                        <input type="date" id="date" name="date" required>
+
+
+        <button type="submit">Submit</button>
+
+                    </form>
+                      </th>
+                  </tr>
+
+
+              </h3>
+              <h3 class="h5 text-black mb-3"></h3>
+                          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+<script>
+               function calcscore() {
+                  var score = 0;
+                  $(".calc:checked").each(function() {
+                    score += parseInt($(this).val(), 10);
+                  });
+                  $("input[name=price]").val(score)
+                }
+                $().ready(function() {
+                  $(".calc").change(function() {
+                    calcscore()
+                  });
+                });
+
+</script>
+{% endblock %}

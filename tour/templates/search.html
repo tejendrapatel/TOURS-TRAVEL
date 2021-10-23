@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="site-section">
+      {% if sr %}
+           {% for s in sr %}
+
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <h2 class="font-weight-light text-black">Our Destinations</h2>
+            <p class="color-black-opacity-5">Book Your  Destination</p>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+            <a href="#" class="unit-1 text-center">
+                <a href="{% url 'details' s.id %}"><img src="{{ s.image.url}}" alt="image" class="img-fluid"></a>
+              <div class="unit-1-text">
+                <strong class="text-primary mb-2 d-block">$590</strong>
+                <h3 class="unit-1-heading">{{s.place}} , {{s.country}}</h3>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+            {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+{% endblock %}
